@@ -5,6 +5,14 @@
 
 Some useful scripts for working with pictures, videos, audio.
 
+Uses: [[https://ffmpeg.org/][FFmpeg 4.x]] and [[https://imagemagick.org/index.php][ImageMagick 7.x]].
+
+** Install
+
+First install [[https://nixos.org/nix/][Nix]], then add [[https://github.com/Potpourri/dotfiles/blob/master/nixos/nixpkgs/overlays/potpourri-overlay.nix][my overlay]] and install package: =nix-env -iA nixpkgs_unstable..media-scripts=.
+
+** Help
+
 *** pic-is-portrait-fullhd
 
 Usage: =pic-is-portrait-fullhd PICTURE.jpg=
@@ -12,6 +20,7 @@ Usage: =pic-is-portrait-fullhd PICTURE.jpg=
 *** pic-to-portrait-fullhd
 
 Usage: =pic-to-portrait-fullhd -i PICTURE.jpg -g GRAVITY -o OUTPUT.jpg=
+
 GRAVITY: NorthWest, North, NorthEast, West, Center, East, SouthWest, South, SouthEast
 
 *** merge-video-and-audio
