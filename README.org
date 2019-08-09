@@ -9,7 +9,7 @@ Uses: [[https://ffmpeg.org/][FFmpeg 4.x]] and [[https://imagemagick.org/index.ph
 
 ** Install
 
-First install [[https://nixos.org/nix/][Nix]], then add [[https://github.com/Potpourri/dotfiles/blob/master/nixos/nixpkgs/overlays/potpourri-overlay.nix][my overlay]] and install package: =nix-env -iA nixpkgs_unstable..media-scripts=.
+First install [[https://nixos.org/nix/][Nix]], then add [[https://github.com/Potpourri/dotfiles/blob/master/nixos/nixpkgs/overlays/potpourri-overlay.nix][my overlay]] and install package: =nix-env -iA nixpkgs_unstable.media-scripts=.
 
 ** Help
 
