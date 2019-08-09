@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+set -o errexit -o nounset -o pipefail
+
+error() {
+	local msg="$1"
+	echo "$(tput setaf 1)ERROR:$(tput sgr0) $msg" >&2
+	exit 1
+}
+
+main() {
+	local USAGE="usage: $0 -i PICTURE.jpg -g GRAVITY -o OUTPUT.jpg
+       GRAVITY: NorthWest, North, NorthEast, West, Center, East, SouthWest, South, SouthEast"
+	local pic
+	local size
+	if (( "$EUID" == 0 )); then
+		error "This script must be run as regular user (non-root)"
+	fi
+	if (( "$#" < 6 )); then
+		error "$USAGE"
+	fi
+	if [[ "$1" != "-i" || "$2" == "" || "$2" == "-"* ]]; then
+		error "$USAGE"
+	fi
+	if [[ "$3" != "-g" || "$4" == "" || "$4" == "-"* ]]; then
+		error "$USAGE"
+	fi
+	if [[ "$5" != "-o" || "$6" == "" || "$6" == "-"* ]]; then
+		error "$USAGE"
+	fi
+
+	pic="$2"
+	gravity="$4"
+	output="$6"
+
+	convert "$pic" -resize 1080x1920^ -gravity "$gravity" -extent 1080x1920 "$output"
+}
+
+main "$@"

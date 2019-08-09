@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+set -o errexit -o nounset -o pipefail
+
+error() {
+	local msg="$1"
+	echo "$(tput setaf 1)ERROR:$(tput sgr0) $msg" >&2
+	exit 1
+}
+
+main() {
+	local USAGE="usage: $0 -i AUDIO.m4a -o OUTPUT.mp3"
+	local audio
+	local output
+	if (( "$EUID" == 0 )); then
+		error "This script must be run as regular user (non-root)"
+	fi
+	if (( "$#" < 4 )); then
+		error "$USAGE"
+	fi
+	if [[ "$1" != "-i" || "$2" == "" || "$2" == "-"* ]]; then
+		error "$USAGE"
+	fi
+	if [[ "$3" != "-o" || "$4" == "" || "$4" == "-"* ]]; then
+		error "$USAGE"
+	fi
+
+	audio="$2"
+	output="$4"
+
+	ffmpeg -i "$audio" -acodec libmp3lame "$output"
+}
+
+main "$@"

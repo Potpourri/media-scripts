@@ -1,0 +1,27 @@
+#+STARTUP: showall
+* media-scripts
+
+** Overview
+
+Some useful scripts for working with pictures, videos, audio.
+
+*** pic-is-portrait-fullhd
+
+Usage: =pic-is-portrait-fullhd PICTURE.jpg=
+
+*** pic-to-portrait-fullhd
+
+Usage: =pic-to-portrait-fullhd -i PICTURE.jpg -g GRAVITY -o OUTPUT.jpg=
+GRAVITY: NorthWest, North, NorthEast, West, Center, East, SouthWest, South, SouthEast
+
+*** merge-video-and-audio
+
+Usage: =merge-video-and-audio -i VIDEO.mp4 -i AUDIO.m4a -o OUTPUT.mp4=
+
+*** m4a-to-mp3
+
+Usage: =m4a-to-mp3 -i AUDIO.m4a -o OUTPUT.mp3=
+
+** License
+
+[[./LICENSE][MIT]]
