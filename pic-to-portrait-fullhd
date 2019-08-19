@@ -10,8 +10,8 @@ error() {
 main() {
 	local USAGE="usage: $0 -i PICTURE.jpg -g GRAVITY -o OUTPUT.jpg
        GRAVITY: NorthWest, North, NorthEast, West, Center, East, SouthWest, South, SouthEast"
-	local pic
-	local size
+	local pic gravity output
+
 	if (( "$EUID" == 0 )); then
 		error "This script must be run as regular user (non-root)"
 	fi

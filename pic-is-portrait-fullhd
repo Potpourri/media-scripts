@@ -14,11 +14,12 @@ success() {
 
 main() {
 	local USAGE="usage: $0 PICTURE.jpg"
-	local pic
+	local pic size
+
 	if (( "$EUID" == 0 )); then
 		error "This script must be run as regular user (non-root)"
 	fi
-	if (( "$#" < 1 )); then
+	if (( "$#" == 0 )); then
 		error "$USAGE"
 	fi
 	if [[ "$1" == "" || "$1" == "-"* ]]; then

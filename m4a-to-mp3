@@ -9,8 +9,8 @@ error() {
 
 main() {
 	local USAGE="usage: $0 -i AUDIO.m4a -o OUTPUT.mp3"
-	local audio
-	local output
+	local audio output
+
 	if (( "$EUID" == 0 )); then
 		error "This script must be run as regular user (non-root)"
 	fi
